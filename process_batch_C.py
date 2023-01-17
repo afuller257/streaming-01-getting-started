@@ -16,7 +16,7 @@ input_file = open(input_file_name, "r")
 output_file = open(output_file_name, "w", newline='')
 
 reader = csv.reader(input_file, delimiter=",")
-writer = csv.writer(output_file, delimiter=",")
+writer = csv.writer(output_file, delimiter=',')
 
 header = next(reader)
 header_list = ["Year","Month","Day","Time","TempF"]
@@ -24,7 +24,7 @@ writer.writerow(header_list)
 
 for row in reader:
     Year, Month, Day, Time, TempK = row
-    TempF = round(9/5)*(TempK - 273.15 + 32)
+    TempF =round(float(TempK)-273.15+32 * 9.0 / 5.0,2)
     writer.writerow([Year, Month, Day, Time, TempF])
 
 output_file.close()
